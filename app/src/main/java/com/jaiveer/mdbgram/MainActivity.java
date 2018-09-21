@@ -2,6 +2,7 @@ package com.jaiveer.mdbgram;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,6 +11,8 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -18,8 +21,10 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
+
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "BOB TAG";
+    private static final int NEW_SNAP = 2;
     RecyclerView mRecyclerView;
     LinearLayoutManager mLinearLayoutManager;
     MDBsnapAdapter adapter;
@@ -28,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
     FirebaseDatabase database;
     DatabaseReference myRef;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView.setLayoutManager(mLinearLayoutManager);
         mRecyclerView.setAdapter(adapter);
 
+        mAuth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
         myRef = database.getReference("snaps");
         adapter.notifyDataSetChanged();
@@ -71,8 +78,22 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), NewSnapActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent, NEW_SNAP);
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == NEW_SNAP) {
+            if (resultCode == RESULT_OK) {
+                String url = data.getStringExtra("url");
+                String caption = data.getStringExtra("caption");
+                FirebaseUser currentUser = mAuth.getCurrentUser();
+                MDBsnap newSnap = new MDBsnap(caption, currentUser.getEmail(), url);
+                myRef.child(myRef.push().getKey()).setValue(newSnap);
+            }
+        }
     }
 }

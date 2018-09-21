@@ -32,7 +32,7 @@ public class MDBsnapAdapter extends RecyclerView.Adapter<MDBsnapAdapter.MDBsnapV
 
     @Override
     public void onBindViewHolder(@NonNull MDBsnapViewHolder mdBsnapViewHolder, int position) {
-        mdBsnapViewHolder.bind(data.get(position));
+        mdBsnapViewHolder.bind(data.get(getItemCount() - 1 - position));
     }
 
 

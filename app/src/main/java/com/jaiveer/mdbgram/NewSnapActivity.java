@@ -10,6 +10,7 @@ import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -51,7 +52,7 @@ public class NewSnapActivity extends AppCompatActivity {
 
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
 
-        final String key = ref.child("images").push().getKey();
+        final String key = ref.child("snaps").push().getKey();
 
         imageView = findViewById(R.id.imageView);
         captionText = findViewById(R.id.captionEdit);
@@ -92,8 +93,7 @@ public class NewSnapActivity extends AppCompatActivity {
                             ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                                 @Override
                                 public void onSuccess(Uri uri) {
-                                    Uri downloadUrl = uri;
-                                    //Do what you want with the url
+                                    uploadSnapAndFinish(uri);
                                 }});
                             Toast.makeText(NewSnapActivity.this, "Uploaded", Toast.LENGTH_SHORT).show();
 
@@ -133,5 +133,13 @@ public class NewSnapActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
+    }
+
+    private void uploadSnapAndFinish(Uri uri) {
+        Intent i = new Intent(this, MainActivity.class);
+        i.putExtra("url", uri.toString());
+        i.putExtra("caption", captionText.getText().toString());
+        setResult(RESULT_OK, i);
+        finish();
     }
 }
