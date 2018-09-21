@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">MDBgram</string>
+    <string name="newUserInstructions">Welcome to MDBgram</string>
+    <string name="oldUserInstructions">Welcome back!</string>
+    <string name="signup">Sign Up</string>
+    <string name="login">Log in</string>
+    <string name="alternateNewUserInstructions">Already have an account?</string>
+    <string name="alternateOldUserInstructions">New to MDBgram?</string>
+</resources>

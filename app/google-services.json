@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "193014579237",
+    "firebase_url": "https://mdbgram-e08b0.firebaseio.com",
+    "project_id": "mdbgram-e08b0",
+    "storage_bucket": "mdbgram-e08b0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:193014579237:android:90f946b506b51dee",
+        "android_client_info": {
+          "package_name": "com.jaiveer.mdbgram"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "193014579237-od6lln1nm2v3bpabb6fo86k162i3jknh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.jaiveer.mdbgram",
+            "certificate_hash": "6c6d02bac49c977fcd445ac7fc31b0d023ee348d"
+          }
+        },
+        {
+          "client_id": "193014579237-0accqjpcfab98s3qumeiuftj713e9lm4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBVoaEeajulxT7AEzqVkyHh2erHZrODHqA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "193014579237-0accqjpcfab98s3qumeiuftj713e9lm4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
