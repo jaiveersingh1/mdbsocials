@@ -1,4 +1,4 @@
-package com.jaiveer.mdbgram;
+package com.jaiveer.mdbsocials;
 
 import org.junit.Test;
 

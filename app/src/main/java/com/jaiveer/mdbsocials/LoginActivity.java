@@ -1,4 +1,4 @@
-package com.jaiveer.mdbgram;
+package com.jaiveer.mdbsocials;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -66,6 +66,9 @@ public class LoginActivity extends AppCompatActivity {
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if(currentUser != null) {
             newUser = false;
+            Toast.makeText(this, currentUser.getEmail(), Toast.LENGTH_SHORT).show();
+            Intent i = new Intent(LoginActivity.this, MainActivity.class);
+            startActivity(i);
         }
     }
 

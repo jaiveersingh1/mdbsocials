@@ -1,4 +1,4 @@
-package com.jaiveer.mdbgram;
+package com.jaiveer.mdbsocials;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
